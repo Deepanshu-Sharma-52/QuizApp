@@ -53,5 +53,17 @@ public class LoginController {
     public List<QuizQuestion> saveQuestion(@RequestBody List<QuizQuestion> question) {
         return questionService.saveQuestion(question);
     }
+     @PostMapping("/del")
+      public ResponseEntity<Map<String,String>> deleteQuestion(@RequestBody QuizQuestion quizQuestion){
+        String st=questionService.delQuestion(quizQuestion.getId());
+        if(!st.isEmpty()){
+            return ResponseEntity.ok(Collections.singletonMap("message","Delete successful"));
+        }
+        else {
+            return ResponseEntity.accepted().body(Collections.singletonMap("message","Delete unsuccessful"));
+        }
+      }
+
+
 
 }

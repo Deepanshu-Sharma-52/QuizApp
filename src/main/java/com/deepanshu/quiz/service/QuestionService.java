@@ -23,4 +23,9 @@ public class QuestionService {
         List<QuizQuestion> save = questionRepo.saveAll(question);
         return save;
     }
+
+    public String delQuestion(Long id){
+        questionRepo.deleteById(id);
+        return "Delete successful";
+    }
 }
